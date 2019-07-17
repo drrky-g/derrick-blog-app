@@ -2,35 +2,40 @@
 
 @{
     ViewBag.Title = "Create";
+    /* mechanism for ushering data into the view that isnt part of the actual view */
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm()) //tells html to place a form tag here and close at '}'
 {
-    @Html.AntiForgeryToken()
-    
+    @Html.AntiForgeryToken() //links form to unique identifier to ensure the data isnt intercepted and tampered with
+    //antiforgery token MUST be in every form ever used to httpPost info to the database
     <div class="form-horizontal">
         <h4>BlogPost</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <!--Title field-->
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <!-- LabelFor creates a label for the input that matches the class property name-->
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Title" } })
+                <!--EditorFor creates an input box (note syntax for adding placeholder attribute) -->
                 @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                <!-- This is where an alert is shown if there is an in-->
             </div>
         </div>
-
+        <!-- Abstract Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Abstract, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Abstract, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Abstract, new { htmlAttributes = new { @class = "form-control" /*Enter any HTML attributes and values you want to add here */ } })
                 @Html.ValidationMessageFor(model => model.Abstract, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <!-- Slug Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,7 +43,7 @@
                 @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <!-- Body Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -46,7 +51,7 @@
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <!-- MediaURL Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -54,17 +59,17 @@
                 @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <!-- Published Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
+                <div class="checkbox"><!-- if you have a boolean value, it will automatically place this div here -->
                     @Html.EditorFor(model => model.Published)
                     @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-
+        <!-- Created Date Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -72,7 +77,7 @@
                 @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <!-- Updated Date Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -80,10 +85,12 @@
                 @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <!-- Submit Button -->
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
+                <!-- this button kicks off the httpPost action when you submit a post
+                    (should always have 'type="submit"' to perform a httpPost action-->
             </div>
         </div>
     </div>

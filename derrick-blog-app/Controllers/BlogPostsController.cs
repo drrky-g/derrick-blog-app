@@ -17,17 +17,6 @@ namespace derrick_blog_app.Controllers
         // GET: BlogPosts
 
 
-        /*This index will only show posts that have a boolean
-        value of true for the published property */
-        public ActionResult Index()
-        {
-            return View(db.BlogPosts.ToList());
-
-        }
-
-            
-        
-
         //[Authorize(Roles ="Admin")]
         //^^^^ This makes sure that you can only see this view
         //if you have an admin role
@@ -35,6 +24,15 @@ namespace derrick_blog_app.Controllers
 
         /*This generates a view for the admin to see all posts
          even if they arent published */
+
+        public ActionResult Index()
+        {
+            return View(db.BlogPosts.ToList());
+
+        }
+
+        /*This index will only show posts that have a boolean
+        value of true for the published property */
 
         public ActionResult AdminIndex()
         {
