@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -58,5 +59,6 @@ namespace derrick_blog_app.Models
         //that data to populate the relevant class locally
         public DbSet<BlogPost>BlogPosts { get; set; }
         public DbSet<Comment>Comments { get; set; }
+        public IEnumerable ApplicationUsers { get; internal set; }
     }
 }
