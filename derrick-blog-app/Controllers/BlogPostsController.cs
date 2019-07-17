@@ -15,10 +15,37 @@ namespace derrick_blog_app.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: BlogPosts
+
+
+        /*This index will only show posts that have a boolean
+        value of true for the published property */
         public ActionResult Index()
         {
             return View(db.BlogPosts.ToList());
+
         }
+
+            
+        
+
+        //[Authorize(Roles ="Admin")]
+        //^^^^ This makes sure that you can only see this view if you have an admin role
+        //IT MUST BE DIRECTLY ABOVE THE ACTION YOU WANT THE AUTHORIZATION FOR
+
+        /*This generates a view for the admin to see all posts
+         even if they arent published */
+
+        public ActionResult AdminIndex()
+        {
+            //set variable to only show published blog posts
+            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).ToList();
+            //return the view for all published posts
+            return View("Index",publishedBlogPosts);
+        }
+
+        
+
+            public ActionResult 
 
         // GET: BlogPosts/Details/5
         public ActionResult Details(int? id)
