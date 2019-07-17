@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<derrick_blog_app.Models.BlogPost>
-
+<!-- functionally, you could seperate the namespace from the model here.
+    it would look something like 'using: derrick_blog_app;'
+    then you can add the IEnumerable model afterwords.-->
 @{
     ViewBag.Title = "Index";
 }
@@ -38,7 +40,9 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model) {<!-- 'Model' must be capitalized here, or it'll error out -->
+    <!-- if you change 'item' variable, you'll need to change where 'item' is in the razor
+        links that are being called in the table below -->
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Title)

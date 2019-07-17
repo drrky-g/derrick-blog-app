@@ -29,7 +29,8 @@ namespace derrick_blog_app.Controllers
         
 
         //[Authorize(Roles ="Admin")]
-        //^^^^ This makes sure that you can only see this view if you have an admin role
+        //^^^^ This makes sure that you can only see this view
+        //if you have an admin role
         //IT MUST BE DIRECTLY ABOVE THE ACTION YOU WANT THE AUTHORIZATION FOR
 
         /*This generates a view for the admin to see all posts
