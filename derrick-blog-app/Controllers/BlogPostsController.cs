@@ -45,7 +45,7 @@ namespace derrick_blog_app.Controllers
 
         
 
-            public ActionResult 
+         
 
         // GET: BlogPosts/Details/5
         public ActionResult Details(int? id)
