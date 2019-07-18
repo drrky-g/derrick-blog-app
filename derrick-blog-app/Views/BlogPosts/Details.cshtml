@@ -39,7 +39,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Body)
+            <!-- how to convert raw html to formatted text -->
+            @Html.Raw(Model.Body)
         </dd>
 
         <dt>
@@ -92,7 +93,12 @@
         will  be sent to the Edit View)
         
         )
+
+        The link will do an HttpGet to render the Edit View that is specified by the 
+        BlogPosts Controller. Then it will do an HttpPost to move the data at this Model.Id to it.
+        We are telling it to use the id on this page, and use that same id on the next page.
         ------------------------------------------------------------------------------>
+
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

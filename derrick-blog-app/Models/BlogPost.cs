@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace derrick_blog_app.Models
 {
@@ -11,6 +12,8 @@ namespace derrick_blog_app.Models
         public string Title { get; set; }
         public string Abstract { get; set; }
         public string Slug { get; set; }
+
+        [AllowHtml]
         public string Body { get; set; }
         public string MediaUrl { get; set; }
         public bool Published { get; set; }

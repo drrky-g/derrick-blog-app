@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using derrick_blog_app.Models;
+using derrick_blog_app.Utilities;
 
 namespace derrick_blog_app.Controllers
 {
@@ -140,6 +141,35 @@ namespace derrick_blog_app.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // Slug Builder
+
+        public ActionResult BuildTheSlug([Bind(Include = "Id,Title,Body,MediaURL,Published")] BlogPost blogPost)
+        {
+            if (ModelState.IsValid)
+            {
+                var Slug = StringUtilities.CreateSlug(blogPost.Title);
+                if (String.IsNullOrWhiteSpace(Slug))
+                {
+                    ModelState.AddModelError("Title", "Invalid title");
+                    return View(blogPost);
+                }
+                if(db.BlogPosts.Any(p => p.Slug == Slug))
+                {
+                    ModelState.AddModelError("Title", "The title must be unique");
+                    return View(blogPost);
+                }
+
+                blogPost.Slug = Slug;
+                blogPost.Created = DateTimeOffset.Now;
+                db.BlogPosts.Add(blogPost);
+                return RedirectToAction("Index");
+            }
+            return View(blogPost);
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

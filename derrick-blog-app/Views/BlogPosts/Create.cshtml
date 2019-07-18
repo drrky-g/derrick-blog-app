@@ -49,7 +49,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control", id="create-body" } })
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -65,7 +65,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox"><!-- if you have a boolean value, it will automatically place this div here -->
+                <div class="checkbox">
+                    <!-- if you have a boolean value, it will automatically place this div here -->
                     @Html.EditorFor(model => model.Published)
                     @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
                 </div>
@@ -98,7 +99,8 @@
     </div>
 }
 
-<div><!-- links to go back to index -->
+<div>
+    <!-- links to go back to index -->
     <!--  -->
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -106,4 +108,16 @@
 @section Scripts {
     <!-- JQ validation scripts -->
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            tinymce.init({
+                selector: '#create-body'
+            });
+        });
+    </script>
+
+
 }
