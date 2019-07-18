@@ -48,13 +48,13 @@ namespace derrick_blog_app.Controllers
          
 
         // GET: BlogPosts/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(string Slug)
         {
-            if (id == null)
+            if (String.IsNullOrWhiteSpace(Slug))
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.Find(id);
+            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == Slug);
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -73,10 +73,29 @@ namespace derrick_blog_app.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Abstract,Slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost)
+
+
+
+        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaUrl,Published")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
+                var Slug = StringUtilities.CreateSlug(blogPost.Title);
+                if (String.IsNullOrWhiteSpace(Slug))
+                {
+                    ModelState.AddModelError("Title", "Invalid Title");
+                    return View(blogPost);
+                }
+                if(db.BlogPosts.Any(p => p.Slug == Slug))
+                {
+                    ModelState.AddModelError("Title", "The title must be unique");
+                }
+
+                blogPost.Slug = Slug;
+
+                //This will take the date automatically instead of having the user input the day itself
+                blogPost.Created = DateTimeOffset.Now;
+
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -141,35 +160,6 @@ namespace derrick_blog_app.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        // Slug Builder
-
-        public ActionResult BuildTheSlug([Bind(Include = "Id,Title,Body,MediaURL,Published")] BlogPost blogPost)
-        {
-            if (ModelState.IsValid)
-            {
-                var Slug = StringUtilities.CreateSlug(blogPost.Title);
-                if (String.IsNullOrWhiteSpace(Slug))
-                {
-                    ModelState.AddModelError("Title", "Invalid title");
-                    return View(blogPost);
-                }
-                if(db.BlogPosts.Any(p => p.Slug == Slug))
-                {
-                    ModelState.AddModelError("Title", "The title must be unique");
-                    return View(blogPost);
-                }
-
-                blogPost.Slug = Slug;
-                blogPost.Created = DateTimeOffset.Now;
-                db.BlogPosts.Add(blogPost);
-                return RedirectToAction("Index");
-            }
-            return View(blogPost);
-        }
-
-
-
 
         protected override void Dispose(bool disposing)
         {

@@ -15,9 +15,17 @@ namespace derrick_blog_app
 
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
-            
-            
+
+
+            routes.MapRoute(
+                name: "NewSlug",
+                url: "Blog/{slug}",
+                defaults: new
+                {
+                    controller = "BlogPosts",
+                    action = "Details",
+                    slug = UrlParameter.Optional
+                });
 
             routes.MapRoute(
                 name: "Default",
