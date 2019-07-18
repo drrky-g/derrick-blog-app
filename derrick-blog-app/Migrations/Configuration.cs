@@ -68,15 +68,15 @@ namespace derrick_blog_app.Migrations
             }
 
             //user two, Gary Miller
-            if(!context.Users.Any(u => u.Email == "GaryMiller@Mailinator.com"))
+            if(!context.Users.Any(u => u.Email == "DerrickG@Mailinator.com"))
             {//if there is no user with this email, create a new user
                 userManager.Create(new ApplicationUser
                 {//fill the ApplicationUser class with this information for this user
-                    UserName = "GaryMiller@Mailinator.com",
-                    Email = "GaryMiller@Mailinator.com",
-                    FirstName = "Gary",
-                    LastName = "Miller",
-                    DisplayName = "Gare"
+                    UserName = "DerrickG@Mailinator.com",
+                    Email = "DerrickG@Mailinator.com",
+                    FirstName = "Derrick",
+                    LastName = "Gordon",
+                    DisplayName = "Drrk"
                 }, /*this is the password for the user*/ "Abc&123!");
             }
 
@@ -86,10 +86,10 @@ namespace derrick_blog_app.Migrations
             #region assign users to roles
 
             var userId = userManager.FindByEmail("JTwichell@Mailinator.com").Id;
-            userManager.AddToRole(userId, "Admin");
-
-            userId = userManager.FindByEmail("GaryMiller@Mailinator.com").Id;
             userManager.AddToRole(userId, "Moderator");
+
+            userId = userManager.FindByEmail("DerrickG@Mailinator.com").Id;
+            userManager.AddToRole(userId, "Admin");
             #endregion 
         }
     }

@@ -25,8 +25,8 @@ namespace derrick_blog_app.Controllers
 
         /*This generates a view for the admin to see all posts
          even if they arent published */
-
-        public ActionResult Index()
+        [Authorize(Roles = "Admin")]
+        public ActionResult AdminIndex()
         {
             return View(db.BlogPosts.ToList());
 
@@ -35,7 +35,7 @@ namespace derrick_blog_app.Controllers
         /*This index will only show posts that have a boolean
         value of true for the published property */
 
-        public ActionResult AdminIndex()
+        public ActionResult Index()
         {
             //set variable to only show published blog posts
             var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).ToList();
@@ -62,6 +62,8 @@ namespace derrick_blog_app.Controllers
             return View(blogPost);
         }
 
+
+        [Authorize(Roles = "Admin")]
         // GET: BlogPosts/Create
         public ActionResult Create()
         {
@@ -74,7 +76,7 @@ namespace derrick_blog_app.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
 
-
+        [Authorize(Roles = "Admin")]
         //[Bind()] is used to restrict what properties will be interacted with on the page
         //the strings are the names of the properties being called for the actionresult
         public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost)
