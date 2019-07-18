@@ -75,8 +75,9 @@ namespace derrick_blog_app.Controllers
         [ValidateAntiForgeryToken]
 
 
-
-        public ActionResult Create([Bind(Include = "Id,Title,Body,MediaUrl,Published")] BlogPost blogPost)
+        //[Bind()] is used to restrict what properties will be interacted with on the page
+        //the strings are the names of the properties being called for the actionresult
+        public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
