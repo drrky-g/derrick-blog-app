@@ -87,6 +87,7 @@ namespace derrick_blog_app.Controllers
                     ModelState.AddModelError("Title", "Invalid Title");
                     return View(blogPost);
                 }
+
                 if(db.BlogPosts.Any(p => p.Slug == Slug))
                 {
                     ModelState.AddModelError("Title", "The title must be unique");
@@ -128,12 +129,40 @@ namespace derrick_blog_app.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Title,Abstract,Slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost)
         {
+           
+
             if (ModelState.IsValid)
             {
+
+                //creating new slug during edit based off of edited title
+                var newSlug = StringUtilities.CreateSlug(blogPost.Title);
+
+                //if new slug does not equal original slug, execute code inside {}
+                if (newSlug != blogPost.Slug)
+                {
+                    if (String.IsNullOrWhiteSpace(newSlug))
+                    {//if slug is empty, return to view and inform user there is no title to make slug
+                        ModelState.AddModelError("Title", "Invalid Title");
+                        return View(blogPost);
+                    }
+
+                    if (db.BlogPosts.Any(p => p.Slug == newSlug))
+                    {//if slug matches any other existing slugs, inform user they need a unique title to generate the slug
+                        ModelState.AddModelError("Title", "The title must be unique");
+                        return View(blogPost);
+                    }
+                    //use edited slug to generate new slug
+                    blogPost.Slug = newSlug;
+                }
+
+                //trying to make it grab time if you edit a page
+                blogPost.Updated = DateTimeOffset.Now;
+
                 db.Entry(blogPost).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            
             return View(blogPost);
         }
 
