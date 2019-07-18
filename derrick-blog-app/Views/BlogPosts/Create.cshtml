@@ -37,14 +37,7 @@
                 @Html.ValidationMessageFor(model => model.Abstract, "", new { @class = "text-danger" })
             </div>
         </div>
-        <!-- Slug Field -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.Slug, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger" })
-            </div>
-        </div>
+       
         <!-- Body Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -54,6 +47,7 @@
             </div>
         </div>
         <!-- MediaURL Field -->
+        <!-- MediaURL Field 
         <div class="form-group">
             @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -61,6 +55,7 @@
                 @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
             </div>
         </div>
+            -->
         <!-- Published Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.Published, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -70,22 +65,6 @@
                     @Html.EditorFor(model => model.Published)
                     @Html.ValidationMessageFor(model => model.Published, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-        <!-- Created Date Field -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.Created, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Created, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Created, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <!-- Updated Date Field -->
-        <div class="form-group">
-            @Html.LabelFor(model => model.Updated, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Updated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Updated, "", new { @class = "text-danger" })
             </div>
         </div>
         <!-- Submit Button -->

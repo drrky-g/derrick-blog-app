@@ -71,7 +71,8 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            <!-- this now uses the slug link instead of the default routing -->
+            @Html.ActionLink("Details", "Details", new { slug=item.Slug }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>

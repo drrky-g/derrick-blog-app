@@ -90,6 +90,7 @@ namespace derrick_blog_app.Controllers
                 if(db.BlogPosts.Any(p => p.Slug == Slug))
                 {
                     ModelState.AddModelError("Title", "The title must be unique");
+                    return View(blogPost);
                 }
 
                 blogPost.Slug = Slug;
