@@ -54,7 +54,8 @@ namespace derrick_blog_app.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BlogPost blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == Slug);
+            var blogPost = db.BlogPosts.FirstOrDefault(p => p.Slug == Slug);
+
             if (blogPost == null)
             {
                 return HttpNotFound();
@@ -63,8 +64,9 @@ namespace derrick_blog_app.Controllers
         }
 
 
-        [Authorize(Roles = "Admin")]
+      
         // GET: BlogPosts/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -77,35 +79,37 @@ namespace derrick_blog_app.Controllers
         [ValidateAntiForgeryToken]
 
         [Authorize(Roles = "Admin")]
-        //[Bind()] is used to restrict what properties will be interacted with on the page
+        //[Bind()] is used to restrict what properties will be pulled from the database
         //the strings are the names of the properties being called for the actionresult
         public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
                 var Slug = StringUtilities.CreateSlug(blogPost.Title);
+                //sets 'Slug' to call CreateSlug static class
                 if (String.IsNullOrWhiteSpace(Slug))
-                {
+                {//if slug is blank, show error: invalid title, return to view
                     ModelState.AddModelError("Title", "Invalid Title");
                     return View(blogPost);
                 }
 
                 if(db.BlogPosts.Any(p => p.Slug == Slug))
-                {
+                {//if slug matches any other slug in the BlogPosts db, show error: title must be unique, return to view
                     ModelState.AddModelError("Title", "The title must be unique");
                     return View(blogPost);
                 }
-
+                //sets slug to equal what the CreateSlug class creates
                 blogPost.Slug = Slug;
 
                 //This will take the date automatically instead of having the user input the day itself
                 blogPost.Created = DateTimeOffset.Now;
-
+                //tell blogpost section of db to add a new blogpost data entry
                 db.BlogPosts.Add(blogPost);
+                //secures that entry in the database
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            //if something goes wrong, you will be returned to where you submited the blogPost data
             return View(blogPost);
         }
 

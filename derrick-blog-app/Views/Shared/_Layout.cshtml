@@ -39,6 +39,11 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+  
+    <!--  vue data injection 
+    <script src="~/Scripts/datainject.js"></script>-->
+
+    <!-- declares a section that you need injected into the shared layout view instead of the individual view -->
     @RenderSection("scripts", required: false)
 </body>
 </html>

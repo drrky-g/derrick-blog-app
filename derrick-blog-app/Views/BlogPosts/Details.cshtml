@@ -9,92 +9,114 @@
 <div>
     <h4>BlogPost</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Abstract)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Abstract)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Slug)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Slug)
-        </dd>
+    <div id="titleLabel">
+        <!-- display property name : title -->
+        <h3>{{ message }}</h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Body)
-        </dt>
+    </div>
 
-        <dd>
-            <!-- how to convert raw html to formatted text -->
-            @Html.Raw(Model.Body)
-        </dd>
+    <div id="titleContent">
+        <!-- display content : title -->
+        <p>{{ message }}</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MediaUrl)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.MediaUrl)
-        </dd>
+    <div id="abstractLabel">
+        <!-- display property name: abstract -->
+        <h3>{{ message }}</h3>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Published)
-        </dt>
+    <div id="abstractContent">
+        <!-- display content: abstract -->
+        <p>{{ message }}</p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Published)
-        </dd>
+    <div id="slugLabel">
+        <!-- display property name: slug -->
+        <h3>{{ message }}</h3>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
+    <div id="slugContent">
+        <!-- display content: slug -->
+        <p>{{ message }}</p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
+    <div id="bodyLabel">
+        <!-- display property name: body -->
+        <h3>{{ message }}</h3>
+    </div>
+    
+    <div v-html="formatBody">
+        <!--display content: body -->
+        <p>{{ message }}</p>
+        <!-- how to convert raw html to formatted text -->
+    </div>
+    
+    <div id="mediaLabel">
+        <!-- display property name: mediaURL-->
+        <h3>{{ message }}</h3>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
+    <div id="mediaContent">
+        <!-- display content: mediaURL -->
+        <p>{{ message }}</p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
+    <div id="publishedLabel">
+        <!-- display property name: published-->
+        <h3>{{ message }}</h3>
+    </div>
 
-    </dl>
+    <div id="publishedContent">
+        <!-- display content: published -->
+        <p>{{ message }}</p>
+    </div>
+
+    <div id="createLabel">
+        <!-- display property name: createDate -->
+        <h3>{{ message }}</h3>
+    </div>
+
+    <div id="createContent">
+        <!-- display content: createDate -->
+        <p>{{ message }}</p>
+    </div>
+
+    <div id="updateLabel">
+        <!-- display property name: updateDate-->
+        <h3>{{ message }}</h3>
+    </div>
+
+    <div id="updateContent">
+        <!-- display content: updateDate -->
+        <p>{{ message }}</p>
+    </div>
+
+
 </div>
 <p>
     <!--------------------------------------------------------------
-        syntax: 
+        syntax:
         HTML.ActionLink <---creates a link in razor syntax
         (
 
         1: text on link,
 
         2: ActionResult used by controller referenced by model at top of page
-        (in this case, BlogPosts Controller using the Edit Action), 
+        (in this case, BlogPosts Controller using the Edit Action),
 
-        3: Routes an HttpPost to the View that its linking to 
+        3: Routes an HttpPost to the View that its linking to
         (in this case, the Id of the BlogPost you are using the Details View on
         will  be sent to the Edit View)
-        
+
         )
 
-        The link will do an HttpGet to render the Edit View that is specified by the 
+        The link will do an HttpGet to render the Edit View that is specified by the
         BlogPosts Controller. Then it will do an HttpPost to move the data at this Model.Id to it.
         We are telling it to use the id on this page, and use that same id on the next page.
         ------------------------------------------------------------------------------>
@@ -102,3 +124,131 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+<!--  Vue link -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+@section scripts{
+
+    <script>
+        //This script will be used to inject data into views
+        //using the Vue.js framework
+        //purpose: keep a modular, easy to maintain structure with razor code consolidated to bottom of page
+
+        var titleLabel = new Vue({
+                el: '#titleLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Title)'
+            }
+        })
+
+        var titleContent = new Vue({
+            el: '#titleContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.Title)'
+            }
+        })
+
+        var abstractLabel = new Vue({
+            el: '#abstractLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Abstract)'
+            }
+        })
+
+        var abstractContent = new Vue({
+            el: '#abstractContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.Abstract)'
+            }
+        })
+
+        var slugLabel = new Vue({
+            el: '#slugLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Slug)'
+            }
+        })
+
+        var slugContent = new Vue({
+            el: '#slugContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.Slug)'
+            }
+        })
+
+        var bodyLabel = new Vue({
+            el: '#bodyLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Body)'
+            }
+        })
+
+        var bodyContent = new Vue({
+            el: '#bodyContent',
+                data: {
+                message: '@Html.Raw(Model.Body)'
+            }
+        })
+
+        
+
+        var mediaLabel = new Vue({
+            el: '#mediaLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.MediaUrl)'
+            }
+        })
+
+        var mediaContent = new Vue({
+            el: '#mediaContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.MediaUrl)'
+            }
+        })
+
+        var publishedLabel = new Vue({
+            el: '#publishedLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Published)'
+            }
+        })
+
+        var publishedContent = new Vue({
+            el: '#publishedContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.Published)'
+            }
+        })
+
+        var createDateLabel = new Vue({
+            el: '#createLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Created)'
+            }
+        })
+
+        var createDateContent = new Vue({
+            el: '#createContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.Created)'
+            }
+        })
+
+        var updateDateLabel = new Vue({
+            el: '#updateLabel',
+                data: {
+                message: '@Html.DisplayNameFor(model => model.Updated)'
+            }
+        })
+
+        var updateDateContent = new Vue({
+            el: '#updateContent',
+                data: {
+                message: '@Html.DisplayFor(model => model.Updated)'
+            }
+        })
+    </script>
+
+}

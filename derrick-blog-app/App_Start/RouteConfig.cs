@@ -16,9 +16,10 @@ namespace derrick_blog_app
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-
+            //route for navigating posts
             routes.MapRoute(
                 name: "NewSlug",
+                //You can change 'Blog' in the URL to whatever you want (Vanity URL)
                 url: "Blog/{slug}",
                 defaults: new
                 {
@@ -26,7 +27,7 @@ namespace derrick_blog_app
                     action = "Details",
                     slug = UrlParameter.Optional
                 });
-
+            //default route
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
