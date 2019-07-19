@@ -1,32 +1,38 @@
-﻿@{
+﻿@model IEnumerable<derrick_blog_app.Models.BlogPost>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <!-- THIS IS THE ONE I WILL REPEAT-->
 <!-- Single Blog Area  -->
-<div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
-    <div class="row">
-        <div class="col-12">
-            <div class="single-blog-thumbnail">
-                <img src="/img/blog-img/7.jpg" alt="">
-                <div class="post-date">
-                    <a href="#">10 <span>march</span></a>
+
+
+
+    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
+        <div class="row">
+            <div class="col-12">
+                <div class="single-blog-thumbnail">
+                    <img src="/img/blog-img/7.jpg"  alt="">
+                    <div class="post-date">
+                        <a href="#">10 <span>march</span><!--Posted date--></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12">
-            <!-- Blog Content -->
-            <div class="single-blog-content mt-50">
-                <div class="line"></div>
-                <a href="#" class="post-tag">Lifestyle</a>
-                <h4><a href="#" class="post-headline">10 Tips to organize the perfect party</a></h4>
-                <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
-                <div class="post-meta">
-                    <p>By <a href="#">james smith</a></p>
-                    <p>3 comments</p>
+            <div class="col-12">
+                <!-- Blog Content -->
+                <div class="single-blog-content mt-50">
+                    <div class="line"></div>
+                    <a href="#" class="post-tag">Lifestyle</a>
+                    <h4><a href="#" class="post-headline"><!-- title -->10 Tips to organize the perfect party</a></h4>
+                    <p><!-- abstract -->Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
+                    <div class="post-meta">
+                        <p>By <a href="#"><!-- author -->james smith</a></p>
+                        <p>3 comments<!-- show number of comments with virtual nav somehow?--></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- REPEATING DIV ENDS HERE -->
+
+    <!-- REPEATING DIV ENDS HERE -->

@@ -28,9 +28,11 @@ namespace derrick_blog_app.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AdminIndex()
         {
-            return View(db.BlogPosts.ToList());
+            return View(db.BlogPosts.Where(b => b.Published));
 
         }
+        //.OrderByDescending(b => b.Created)
+        //this will order the blogposts in decending order
 
         /*This index will only show posts that have a boolean
         value of true for the published property */

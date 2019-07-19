@@ -27,6 +27,8 @@ namespace derrick_blog_app
                     action = "Details",
                     slug = UrlParameter.Optional
                 });
+
+
             //default route
             routes.MapRoute(
                 name: "Default",

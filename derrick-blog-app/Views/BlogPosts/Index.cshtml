@@ -1,83 +1,52 @@
 ﻿@model IEnumerable<derrick_blog_app.Models.BlogPost>
 <!-- functionally, you could seperate the namespace from the model here.
     it would look something like 'using: derrick_blog_app;'
-    then you can add the IEnumerable model afterwords.-->
+    then you can add the IEnumerable model afterwords.
+
+
+    ALL VIEWS NEED A MODEL ALWAYS! model  view model view model view model view model view
+    -->
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Abstract)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Slug)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Body)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MediaUrl)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Published)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Created)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Updated)
-        </th>
-        <th></th>
-    </tr>
+<!-- THIS IS THE ONE I WILL REPEAT-->
+<!-- Single Blog Area  -->
 
-@foreach (var item in Model) {<!-- 'Model' must be capitalized here, or it'll error out -->
-    <!-- if you change 'item' variable, you'll need to change where 'item' is in the razor
-        links that are being called in the table below -->
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
 
-            
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Abstract)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Slug)
-        </td>
-        <td>
-            <!-- how to convert raw html to formatted text -->
-            @Html.Raw(item.Body)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MediaUrl)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Published)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Created)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Updated)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            <!-- this now uses the slug link instead of the default routing -->
-            @Html.ActionLink("Details", "Details", new { slug=item.Slug }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+@foreach (var item in Model)
+{
+    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
+        <div class="row">
+            <div class="col-12">
+                <div class="single-blog-thumbnail">
+                    <img src="/img/blog-img/7.jpg" alt="">
+                    <div class="post-date">
+                        <a href="#"><span>@Html.DisplayFor(model => item.Created)</span><!--Posted date--></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <!-- Blog Content -->
+                <div class="single-blog-content mt-50">
+                    <div class="line"></div>
+                    <a href="#" class="post-tag">Lifestyle</a>
+                    <h4><a href="#" class="post-headline"><!-- title -->@Html.DisplayFor(modelItem  =>item.Title)</a></h4>
+                    <p><!-- abstract -->@Html.DisplayFor(model  => item.Abstract)</p>
+                    <div class="post-meta">
+                        <p>By <a href="#"><!-- author -->james smith</a></p>
+                        <p>3 comments<!-- show number of comments with virtual nav somehow?--></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- REPEATING DIV ENDS HERE -->
 }
 
-</table>
+
+
+
+
