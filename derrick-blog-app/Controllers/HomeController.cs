@@ -9,7 +9,7 @@ namespace derrick_blog_app.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
+        {   //i only want to push published posts into my public facing index page (same thing i did in blog post controller)
             return View();
         }
 

@@ -18,6 +18,8 @@
         <!-- display property name : title -->
         <h3>{{ message }}</h3>
 
+        <!-- in template, type @Model.Title -->
+        <!-- syntax Model.<property>-->
     </div>
 
     <div id="titleContent">
@@ -189,7 +191,7 @@
             el: '#bodyContent',
                 data: {
                 message: '@Html.Raw(Model.Body)'
-            }
+            }   //use this for passing formatted html still!!!!!!!!!!!
         })
 
         

@@ -35,6 +35,9 @@ namespace derrick_blog_app.Controllers
         /*This index will only show posts that have a boolean
         value of true for the published property */
 
+
+        //  THIS WILL EVENTUALLY BE IN HOME CONTROLLER FOR PUBLIC VIEW!!!!!!
+        //------------------------------------------------------------------------
         public ActionResult Index()
         {
             //set variable to only show published blog posts
