@@ -1297,6 +1297,7 @@ textarea:focus ~ .highlight {
     transform: rotate(-45deg) scaleX(0) translateY(-10px); } }
 /* Footer Area CSS */
 .footer-area {
+  border-top: 1px solid #dcdcdc;
   padding: 60px 0;
   position: relative;
   z-index: 1; }

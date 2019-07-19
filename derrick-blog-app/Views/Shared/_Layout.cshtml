@@ -86,7 +86,7 @@
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
-                        <a href="index.html" class="original-logo"><img src="img/core-img/logo.png" alt=""></a>
+                        <a href="index.html" class="original-logo"><img src="/img/core-img/logo.png" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -216,17 +216,22 @@
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
- 
-    
-    
-    <div class="container">
-     @RenderBody()
+
+    <!-- ##### Blog Wrapper Start ##### -->
+    <div class="blog-wrapper section-padding-100 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-9">
+                    @RenderBody()
+                    <!-- Load More -->
+                    <div class="load-more-btn mt-100 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="1000ms">
+                        <a href="#" class="btn original-btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-
-
-
+    <!-- ##### Blog Wrapper End ##### -->
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer-area text-center">
         <div class="container">
@@ -287,8 +292,6 @@
 
     </footer>
     <!-- ##### Footer Area End ##### -->
-
-
     <!-- Script links -->
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
     <script src="~/Scripts/jquery/jquery-2.2.4.min.js"></script>
@@ -300,7 +303,8 @@
     <script src="~/Scripts/plugins.js"></script>
     <!-- Active js -->
     <script src="~/Scripts/active.js"></script>
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
+ 
