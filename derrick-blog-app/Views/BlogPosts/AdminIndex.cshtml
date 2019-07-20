@@ -1,0 +1,83 @@
+﻿@model IEnumerable<derrick_blog_app.Models.BlogPost>
+
+@{
+    ViewBag.Title = "AdminIndex";
+}
+
+<h2>AdminIndex</h2>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Abstract)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Slug)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MediaUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Published)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Updated)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {<!-- 'Model' must be capitalized here, or it'll error out -->
+        <!-- if you change 'item' variable, you'll need to change where 'item' is in the razor
+            links that are being called in the table below -->
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Abstract)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Slug)
+            </td>
+            <td>
+                <!-- how to convert raw html to formatted text -->
+                @Html.Raw(item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MediaUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Published)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Created)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updated)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                <!-- this now uses the slug link instead of the default routing -->
+                @Html.ActionLink("Details", "Details", new { slug = item.Slug }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>

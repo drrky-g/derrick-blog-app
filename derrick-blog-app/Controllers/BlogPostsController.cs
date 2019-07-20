@@ -28,7 +28,7 @@ namespace derrick_blog_app.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult AdminIndex()
         {
-            return View(db.BlogPosts.Where(b => b.Published));
+            return View("AdminIndex",db.BlogPosts);
 
         }
         //.OrderByDescending(b => b.Created)
