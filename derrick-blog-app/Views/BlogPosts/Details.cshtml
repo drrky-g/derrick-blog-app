@@ -4,253 +4,181 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>BlogPost</h4>
-    <hr />
 
 
 
+<!-- ##### Single Blog Area Start ##### -->
+<div class="single-blog-wrapper section-padding-0-100">
 
-
-    <div id="titleLabel">
-        <!-- display property name : title -->
-        <h3>{{ message }}</h3>
-
-        <!-- in template, type @Model.Title -->
-        <!-- syntax Model.<property>-->
+    <!-- Single Blog Area  -->
+    <div class="single-blog-area blog-style-2 mb-50">
+        <div class="single-blog-thumbnail">
+            <!-- Image -->
+            <img src="/img/bg-img/b5.jpg" alt="">
+            <div class="post-tag-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="post-date">
+                                <!-- Created Date -->
+                                <a href="#">12 <span>march</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="titleContent">
-        <!-- display content : title -->
-        <p>{{ message }}</p>
+    <div class="container">
+        <div class="row">
+            <!-- ##### Post Content Area ##### -->
+            <div class="col-12 col-lg-9">
+                <!-- Single Blog Area  -->
+                <div class="single-blog-area blog-style-2 mb-50">
+                    <!-- Blog Content -->
+                    <div class="single-blog-content">
+                        <div class="line"></div>
+                        <!-- Title -->
+                        <h4><a href="#" class="post-headline mb-0">Party people in the house</a></h4>
+                        <div class="post-meta mb-50">
+                            <!-- Author -->
+                            <p>By <a href="#">james smith</a></p>
+                            <p>3 comments</p>
+                        </div>
+                        <div class="line"></div>
+                        <!-- Catagory tag -->
+                        <a href="#" class="post-tag">Lifestyle</a>
+                        <div class="line"></div>
+                        <!-- Abstract -->
+                        <p class="abstract-content"> Abstract stuff</p>
+                        <!-- Body -->
+                        <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris quis aliquam. Integer accumsan sodales odio, id tempus velit ullamcorper id. Quisque at erat eu libero consequat tempus. Quisque molestie convallis tempus. Ut semper purus metus, a euismod sapien sodales ac. Duis viverra eleifend fermentum. Donec sagittis lacus sit amet augue sodales, vel cursus enim tristique. Maecenas vitae massa ut est consectetur sagittis quis vitae tortor. Sed et massa vel nisi dapibus pretium et et leo.</p>
 
+                        <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl. Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. Ut varius eros at fringilla aliquet. Sed sed sodales quam. Nam fermentum sed turpis sollicitudin lobortis.</p>
+
+                        <p>Proin a nibh dignissim, volutpat mauris vitae, pellentesque nisi. In euismod non ligula at gravida. Nunc blandit eget enim vel mattis. Sed semper, purus ac suscipit scelerisque, eros dui fermentum tortor, vitae facilisis lacus nulla sit amet diam. Nullam eget sagittis mi. Suspendisse vitae volutpat lorem. Cras porta velit id sagittis ultrices. Maecenas efficitur tellus ac aliquam molestie. Morbi vel ipsum gravida, ultricies nunc sed, posuere purus. Donec ipsum lectus, congue ut fermentum vitae, molestie hendrerit erat. Sed lacinia accumsan egestas. Cras ac ipsum a ante placerat pellentesque.</p>
+                    </div>
+                </div>
+
+                <!-- About Author -->
+                <div class="blog-post-author mt-100 d-flex">
+                    <div class="author-thumbnail">
+                        <img src="/img/bg-img/b6.jpg" alt="">
+                    </div>
+                    <div class="author-info">
+                        <div class="line"></div>
+                        <span class="author-role">Author</span>
+                        <h4><a href="#" class="author-name">James Morrison</a></h4>
+                        <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero.</p>
+                    </div>
+                </div>
+
+                <!-- Comment Area Start -->
+                <div class="comment_area clearfix mt-70">
+                    <h5 class="title">Comments</h5>
+
+                    <ol>
+                        <!-- Single Comment Area -->
+                        <li class="single_comment_area">
+                            <!-- Comment Content -->
+                            <div class="comment-content d-flex">
+                                <!-- Comment Author -->
+                                <div class="comment-author">
+                                    <img src="/img/bg-img/b7.jpg" alt="author">
+                                </div>
+                                <!-- Comment Meta -->
+                                <div class="comment-meta">
+                                    <a href="#" class="post-date">March 12</a>
+                                    <p><a href="#" class="post-author">William James</a></p>
+                                    <p>Efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
+                                    <a href="#" class="comment-reply">Reply</a>
+                                </div>
+                            </div>
+                            <ol class="children">
+                                <li class="single_comment_area">
+                                    <!-- Comment Content -->
+                                    <div class="comment-content d-flex">
+                                        <!-- Comment Author -->
+                                        <div class="comment-author">
+                                            <img src="/img/bg-img/b7.jpg" alt="author">
+                                        </div>
+                                        <!-- Comment Meta -->
+                                        <div class="comment-meta">
+                                            <a href="#" class="post-date">March 12</a>
+                                            <p><a href="#" class="post-author">William James</a></p>
+                                            <p>Efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
+                                            <a href="#" class="comment-reply">Reply</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ol>
+                        </li>
+
+                        <!-- Single Comment Area -->
+                        <li class="single_comment_area">
+                            <!-- Comment Content -->
+                            <div class="comment-content d-flex">
+                                <!-- Comment Author -->
+                                <div class="comment-author">
+                                    <img src="/img/bg-img/b7.jpg" alt="author">
+                                </div>
+                                <!-- Comment Meta -->
+                                <div class="comment-meta">
+                                    <a href="#" class="post-date">March 12</a>
+                                    <p><a href="#" class="post-author">William James</a></p>
+                                    <p>Efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
+                                    <a href="#" class="comment-reply">Reply</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <!-- Comment Form -->
+                <div class="post-a-comment-area mt-70">
+                    <h5>Leave a reply</h5>
+                    <!-- Reply Form -->
+                    <form action="#" method="post">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="text" name="name" id="name" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Name</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="email" name="email" id="email" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Email</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group">
+                                    <input type="text" name="subject" id="subject" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Subject</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="group">
+                                    <textarea name="message" id="message" required></textarea>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Comment</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn original-btn">Reply</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div id="abstractLabel">
-        <!-- display property name: abstract -->
-        <h3>{{ message }}</h3>
-    </div>
-
-    <div id="abstractContent">
-        <!-- display content: abstract -->
-        <p>{{ message }}</p>
-    </div>
-
-    <div id="slugLabel">
-        <!-- display property name: slug -->
-        <h3>{{ message }}</h3>
-    </div>
-
-    <div id="slugContent">
-        <!-- display content: slug -->
-        <p>{{ message }}</p>
-    </div>
-
-    <div id="bodyLabel">
-        <!-- display property name: body -->
-        <h3>{{ message }}</h3>
-    </div>
-    
-    <div v-html="formatBody">
-        <!--display content: body -->
-        <p>{{ message }}</p>
-        <!-- how to convert raw html to formatted text -->
-    </div>
-    
-    <div id="mediaLabel">
-        <!-- display property name: mediaURL-->
-        <h3>{{ message }}</h3>
-    </div>
-
-    <div id="mediaContent">
-        <!-- display content: mediaURL -->
-        <p>{{ message }}</p>
-    </div>
-
-    <div id="publishedLabel">
-        <!-- display property name: published-->
-        <h3>{{ message }}</h3>
-    </div>
-
-    <div id="publishedContent">
-        <!-- display content: published -->
-        <p>{{ message }}</p>
-    </div>
-
-    <div id="createLabel">
-        <!-- display property name: createDate -->
-        <h3>{{ message }}</h3>
-    </div>
-
-    <div id="createContent">
-        <!-- display content: createDate -->
-        <p>{{ message }}</p>
-    </div>
-
-    <div id="updateLabel">
-        <!-- display property name: updateDate-->
-        <h3>{{ message }}</h3>
-    </div>
-
-    <div id="updateContent">
-        <!-- display content: updateDate -->
-        <p>{{ message }}</p>
-    </div>
-
-
-</div>
-<p>
-    <!--------------------------------------------------------------
-        syntax:
-        HTML.ActionLink <---creates a link in razor syntax
-        (
-
-        1: text on link,
-
-        2: ActionResult used by controller referenced by model at top of page
-        (in this case, BlogPosts Controller using the Edit Action),
-
-        3: Routes an HttpPost to the View that its linking to
-        (in this case, the Id of the BlogPost you are using the Details View on
-        will  be sent to the Edit View)
-
-        )
-
-        The link will do an HttpGet to render the Edit View that is specified by the
-        BlogPosts Controller. Then it will do an HttpPost to move the data at this Model.Id to it.
-        We are telling it to use the id on this page, and use that same id on the next page.
-        ------------------------------------------------------------------------------>
-
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
-
-
-<!--  Vue link -->
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-@section scripts{
-
-    <script>
-        //This script will be used to inject data into views
-        //using the Vue.js framework
-        //purpose: keep a modular, easy to maintain structure with razor code consolidated to bottom of page
-
-        var titleLabel = new Vue({
-                el: '#titleLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Title)'
-            }
-        })
-
-        var titleContent = new Vue({
-            el: '#titleContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.Title)'
-            }
-        })
-
-        var abstractLabel = new Vue({
-            el: '#abstractLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Abstract)'
-            }
-        })
-
-        var abstractContent = new Vue({
-            el: '#abstractContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.Abstract)'
-            }
-        })
-
-        var slugLabel = new Vue({
-            el: '#slugLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Slug)'
-            }
-        })
-
-        var slugContent = new Vue({
-            el: '#slugContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.Slug)'
-            }
-        })
-
-        var bodyLabel = new Vue({
-            el: '#bodyLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Body)'
-            }
-        })
-
-        var bodyContent = new Vue({
-            el: '#bodyContent',
-                data: {
-                message: '@Html.Raw(Model.Body)'
-            }   //use this for passing formatted html still!!!!!!!!!!!
-        })
-
-        
-
-        var mediaLabel = new Vue({
-            el: '#mediaLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.MediaUrl)'
-            }
-        })
-
-        var mediaContent = new Vue({
-            el: '#mediaContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.MediaUrl)'
-            }
-        })
-
-        var publishedLabel = new Vue({
-            el: '#publishedLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Published)'
-            }
-        })
-
-        var publishedContent = new Vue({
-            el: '#publishedContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.Published)'
-            }
-        })
-
-        var createDateLabel = new Vue({
-            el: '#createLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Created)'
-            }
-        })
-
-        var createDateContent = new Vue({
-            el: '#createContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.Created)'
-            }
-        })
-
-        var updateDateLabel = new Vue({
-            el: '#updateLabel',
-                data: {
-                message: '@Html.DisplayNameFor(model => model.Updated)'
-            }
-        })
-
-        var updateDateContent = new Vue({
-            el: '#updateContent',
-                data: {
-                message: '@Html.DisplayFor(model => model.Updated)'
-            }
-        })
-    </script>
-
-}
+</div> 

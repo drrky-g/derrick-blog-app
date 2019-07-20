@@ -15,38 +15,50 @@
 <!-- Single Blog Area  -->
 
 
-@foreach (var item in Model)
-{
-    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
+<div class="blog-wrapper section-padding-100 clearfix">
+    <div class="container">
         <div class="row">
-            <div class="col-12">
-                <div class="single-blog-thumbnail">
-                    <img src="/img/blog-img/7.jpg" alt="">
-                    <div class="post-date">
-                        <a href="#"><span>@Html.DisplayFor(model => item.Created)</span><!--Posted date--></a>
+            <div class="col-12 col-lg-9">
+
+                @foreach (var item in Model)
+                {
+                    <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1000ms">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="single-blog-thumbnail">
+                                    <img src="/img/blog-img/7.jpg" alt="">
+                                    <div class="post-date">
+                                        <a href="#"><span>@Html.DisplayFor(model => item.Created)</span><!--Posted date--></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <!-- Blog Content -->
+                                <div class="single-blog-content mt-50">
+                                    <div class="line"></div>
+                                    <a href="#" class="post-tag">Lifestyle</a>
+                                    <h4><a href="#" class="post-headline"><!-- title -->@Html.DisplayFor(modelItem => item.Title)</a></h4>
+                                    <p><!-- abstract -->@Html.DisplayFor(model => item.Abstract)</p>
+                                    <div class="post-meta">
+                                        <p>By <a href="#"><!-- author -->james smith</a></p>
+                                        <p>3 comments<!-- show number of comments with virtual nav somehow?--></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                    <!-- REPEATING DIV ENDS HERE -->
+
+                    <!-- Link to read post -->
+            <div class="load-more-btn mt-50 mb-100 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="1000ms">
+                @Html.ActionLink("Read Post", "Details", new { slug = item.Slug }, new { @class = "btn original-btn"} )
+
             </div>
-            <div class="col-12">
-                <!-- Blog Content -->
-                <div class="single-blog-content mt-50">
-                    <div class="line"></div>
-                    <a href="#" class="post-tag">Lifestyle</a>
-                    <h4><a href="#" class="post-headline"><!-- title -->@Html.DisplayFor(modelItem  =>item.Title)</a></h4>
-                    <p><!-- abstract -->@Html.DisplayFor(model  => item.Abstract)</p>
-                    <div class="post-meta">
-                        <p>By <a href="#"><!-- author -->james smith</a></p>
-                        <p>3 comments<!-- show number of comments with virtual nav somehow?--></p>
-                    </div>
-                </div>
+
+                }
+
             </div>
         </div>
     </div>
-
-    <!-- REPEATING DIV ENDS HERE -->
-}
-
-
-
-
-
+</div>
