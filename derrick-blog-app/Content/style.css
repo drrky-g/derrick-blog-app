@@ -34,6 +34,7 @@
 body {
     font-family: "helveticaneuemedium";
     background-color: #131B42;
+    color: #e3e3ff;
 }
 
 h1,
@@ -42,13 +43,13 @@ h3,
 h4,
 h5,
 h6 {
-  color: #000000;
+  color: #e3e3ff;
   font-weight: 500;
   line-height: 1.3;
   font-family: "helveticaneuemedium"; }
 
 p {
-  color: #878787;
+  color: #e3e3ff;
   font-size: 14px;
   line-height: 1.4;
   font-family: "helveticaneuemedium"; }
@@ -290,7 +291,7 @@ img {
 .original-btn {
     position: relative;
     z-index: 1;
-    padding: 0 30px;
+    padding: 0 0;
     min-width: 175px;
     height: 60px;
     font-size: 14px;
@@ -300,7 +301,6 @@ img {
     letter-spacing: 3px;
     font-family: "Open Sans", sans-serif;
     font-weight: bold;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
     color: #131b42;
     background: linear-gradient(-3deg, #42B5FF 5%, #05F4DD 95%);
 }
@@ -351,6 +351,7 @@ img {
 .header-area .logo-area {
     height: 170px;
     background: inherit;
+    text-align: left;
     ;
 }
     @media only screen and (max-width: 767px) {
@@ -377,6 +378,7 @@ img {
 .header-area .original-nav-area .classynav ul li a {
     text-transform: uppercase;
     color: #131b42;
+    background-color: transparent;
     font-weight: bold;
 }
       .header-area .original-nav-area .classynav ul li a:focus, .header-area .original-nav-area .classynav ul li a:hover {
@@ -555,14 +557,16 @@ img {
     .single-blog-area .single-blog-thumbnail img {
       width: 100%; }
     .single-blog-area .single-blog-thumbnail .post-date {
-      position: absolute;
-      z-index: 10;
-      left: 15px;
-      top: 15px;
-      border: 1px solid #787878;
-      background-color: #ffffff;
-      padding: 20px 8px;
-      text-align: center; }
+        position: absolute;
+        z-index: 10;
+        left: 15px;
+        top: 15px;
+        border: 1px solid #5465ff;
+        border-radius: 50px;
+        background: transparent;
+        padding: 8px 8px;
+        text-align: center;
+    }
       .single-blog-area .single-blog-thumbnail .post-date a {
         font-size: 24px;
         text-transform: uppercase;
@@ -572,10 +576,11 @@ img {
         .single-blog-area .single-blog-thumbnail .post-date a span {
           display: block;
           font-family: "Open Sans", sans-serif;
-          font-size: 11px;
-          color: #878787; }
+          font-size: 14px; /* Created Date Stuff */
+          font-weight: bold;
+          color: #5465ff; }
   .single-blog-area .single-blog-content .line {
-    background-color: #c8c8c8;
+    background: linear-gradient(-3deg, #42b5ff 5%, #05f4dd 95%); /* Line Div Color */
     width: 26px;
     height: 2px;
     margin-bottom: 20px; }
@@ -1427,13 +1432,16 @@ textarea:focus ~ .highlight {
 #web-title {
     color: #5465FF;
     font-size: 72px;
-    
+    text-align: left;    
+}
+@media only screen and (max-width: 767px) {
+    #web-title {
+        font-size: 48px;
+    }
 }
 
-p {
+.table {
     color: #e3e3ff;
 }
-
-
 
 /*# sourceMappingURL=style.css.map */

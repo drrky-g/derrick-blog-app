@@ -26,9 +26,14 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="single-blog-thumbnail">
+                                    @if (item.MediaUrl != null)
+                                    {
+                                        <img class="img-responsive" src="@item.MediaUrl" alt="" />
+                                    }
+                                    <!-- placeholder image for now, will remove later-->
                                     <img src="/img/blog-img/1.jpg" alt="">
                                     <div class="post-date">
-                                        <a href="#"><span>@Html.DisplayFor(model => item.Created)</span><!--Posted date--></a>
+                                        <a href="#"><span>@item.Created.ToString("MM/dd/yyyy")</span><!--Posted date--></a>
                                     </div>
                                 </div>
                             </div>
@@ -37,8 +42,8 @@
                                 <div class="single-blog-content mt-50">
                                     <div class="line"></div>
                                     <a href="#" class="post-tag">Lifestyle</a>
-                                    <h4><a href="#" class="post-headline"><!-- title -->@Html.DisplayFor(modelItem => item.Title)</a></h4>
-                                    <p><!-- abstract -->@Html.DisplayFor(model => item.Abstract)</p>
+                                    <h4><a href="#" class="post-headline"><!-- title -->@item.Title</a></h4>
+                                    <p><!-- abstract -->@item.Abstract</p>
                                     <div class="post-meta">                                        
                                         <p>3 comments<!-- show number of comments with virtual nav somehow?--></p>
                                     </div>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -42,8 +43,8 @@ namespace derrick_blog_app.Controllers
         //------------------------------------------------------------------------
         public ActionResult Index()
         {
-            //set variable to only show published blog posts
-            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).ToList();
+            //set variable to only show published blog posts, ordering by most recent
+            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToList();
             //return the view for all published posts
             return View("Index",publishedBlogPosts);
         }
@@ -72,7 +73,7 @@ namespace derrick_blog_app.Controllers
       
         // GET: BlogPosts/Create
         [Authorize(Roles = "Admin")]
-        public ActionResult Create()
+        public ActionResult Create() 
         {
             return View();
         }
@@ -86,10 +87,20 @@ namespace derrick_blog_app.Controllers
         [Authorize(Roles = "Admin")]
         //[Bind()] is used to restrict what properties will be pulled from the database
         //the strings are the names of the properties being called for the actionresult
-        public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost)
+        public ActionResult Create([Bind(Include = "Title,Abstract,MediaURL,Body,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
-            {
+            {   
+                
+                //Media setting
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogPost.MediaUrl = "/Uploads/" + fileName;
+                }
+                
+                //Slug setting
                 var Slug = StringUtilities.CreateSlug(blogPost.Title);
                 //sets 'Slug' to call CreateSlug static class
                 if (String.IsNullOrWhiteSpace(Slug))

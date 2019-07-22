@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "BlogPosts", FormMethod.Post, new { enctype = "Multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -21,6 +21,7 @@
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.Slug)
         @Html.HiddenFor(model =>model.Created)
+        @Html.HiddenFor(model => model.MediaUrl)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -51,7 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MediaUrl, new { htmlAttributes = new { @class = "form-control" } })
+                <input name="image" type="file" class="form-control" />
                 @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
             </div>
         </div>

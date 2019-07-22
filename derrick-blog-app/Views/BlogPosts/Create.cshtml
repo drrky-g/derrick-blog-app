@@ -8,7 +8,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) //tells html to place a form tag here and close at '}'
+@using (Html.BeginForm("Create", "BlogPosts", FormMethod.Post, new { enctype = "Multipart/form-data"})) //tells html to place a form tag here and close at '}'
 {
     @Html.AntiForgeryToken() //links form to unique identifier to ensure the data isnt intercepted and tampered with
     //antiforgery token MUST be in every form ever used to httpPost info to the database
@@ -47,11 +47,11 @@
             </div>
         </div>
         <!-- MediaURL Field -->
-        <!-- MediaURL Field 
+        <!-- MediaURL Field -->
         <div class="form-group">
             @Html.LabelFor(model => model.MediaUrl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MediaUrl, new { htmlAttributes = new { @class = "form-control" } })
+               <input name="image" type="file" class="form-control" />
                 @Html.ValidationMessageFor(model => model.MediaUrl, "", new { @class = "text-danger" })
             </div>
         </div>

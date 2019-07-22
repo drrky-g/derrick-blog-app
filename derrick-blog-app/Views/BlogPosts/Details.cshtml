@@ -14,14 +14,18 @@
     <div class="single-blog-area blog-style-2 mb-50">
         <div class="single-blog-thumbnail">
             <!-- Image -->
-            <img src="/img/bg-img/b5.jpg" alt="">
+
+            @if (Model.MediaUrl != null)
+            {
+                <img class="img-responsive" src="@Model.MediaUrl" alt="" />
+            }
             <div class="post-tag-content">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
                             <div class="post-date">
                                 <!-- Created Date -->
-                                <a href="#"> <span>@Model.Created</span></a>
+                                <a href="#"> <span>@Model.Created.ToString("MM/dd/yyyy")</span></a>
                             </div>
                         </div>
                     </div>
@@ -38,23 +42,23 @@
                 <div class="single-blog-area blog-style-2 mb-50">
                     <!-- Blog Content -->
                     <div class="single-blog-content">
+                        <a href="#" class="post-tag">Lifestyle</a>
                         <div class="line"></div>
                         <!-- Title -->
                         <h4><a href="#" class="post-headline mb-0">@Model.Title Party people in the house</a></h4>
                         <div class="post-meta mb-50">
                             <!-- Author -->
-                            <p>By <a href="#">james smith</a></p>
+                            <p>By james smith</p>
                             <p>3 comments</p>
+
                         </div>
-                        <div class="line"></div>
+
                         <!-- Catagory tag -->
-                        <a href="#" class="post-tag">Lifestyle</a>
-                        <div class="line"></div>
                         <!-- Abstract -->
                         <p class="abstract-content"> @Model.Abstract</p>
                         <!-- Body -->
                         @Html.Raw(Model.Body)
-                        
+
                     </div>
                 </div>
 
