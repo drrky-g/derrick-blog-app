@@ -87,7 +87,7 @@ namespace derrick_blog_app.Controllers
         [Authorize(Roles = "Admin")]
         //[Bind()] is used to restrict what properties will be pulled from the database
         //the strings are the names of the properties being called for the actionresult
-        public ActionResult Create([Bind(Include = "Title,Abstract,MediaURL,Body,Published")] BlogPost blogPost, HttpPostedFileBase image)
+        public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost, HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {   
@@ -149,12 +149,20 @@ namespace derrick_blog_app.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Abstract,Slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost)
+        public ActionResult Edit([Bind(Include = "Id,Title,Abstract,Slug,Body,MediaUrl,Published,Created,Updated")] BlogPost blogPost, HttpPostedFileBase image)
         {
            
 
             if (ModelState.IsValid)
             {
+
+                //Media setting
+                if (ImageUploadValidator.IsWebFriendlyImage(image))
+                {
+                    var fileName = Path.GetFileName(image.FileName);
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
+                    blogPost.MediaUrl = "/Uploads/" + fileName;
+                }
 
                 //creating new slug during edit based off of edited title
                 var newSlug = StringUtilities.CreateSlug(blogPost.Title);
