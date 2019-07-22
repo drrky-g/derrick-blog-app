@@ -375,93 +375,114 @@ img {
     width: 100%;
     z-index: 100;
     @include trans-duration(500ms);
+
     .top-header {
         height: 65px;
+
         @media #{$breakpoint-xs} {
             height: 90px;
         }
+
         @media #{$breakpoint-sm} {
             height: 70px;
         }
+
         .top-social-area {
             text-align: right;
+
             @media #{$breakpoint-xs} {
                 text-align: left;
             }
+
             a {
                 display: inline-block;
                 padding: 5px 15px;
                 color: $color-dark;
                 font-size: 13px;
+
                 &:hover,
                 &:focus {
                     color: $hover-color;
                 }
+
                 @media #{$breakpoint-md} {
                     padding: 5px 7px;
                 }
+
                 @media #{$breakpoint-xs} {
                     padding: 5px 7px;
                 }
+
                 @media #{$breakpoint-sm} {
                     padding: 5px 4px;
                 }
             }
         }
     }
+
     .logo-area {
         height: 170px;
         border-top: 1px solid #e1e1e1;
         border-bottom: 1px solid #e1e1e1;
+
         @media #{$breakpoint-xs} {
             height: 100px;
         }
     }
+
     .original-nav-area {
         height: 100px;
+        color: #131b42;
         @media #{$breakpoint-xs} {
             height: 70px;
         }
+
         .subscribe-btn {
             a {
                 display: inline-block;
                 min-width: 140px;
                 height: 40px;
                 background-color: #0d0d0d;
-                color: $color-white;
+                color: #131b42;
                 border-radius: 0;
                 font-size: 12px;
                 text-transform: uppercase;
                 line-height: 40px;
                 padding: 0;
+
                 &:hover,
                 &:focus {
                     background-color: $hover-color;
                 }
             }
         }
+
         .classynav ul li a {
             text-transform: uppercase;
-            color: #4f4d4d;
+
             &:focus,
             &:hover {
-                color: $color-dark;
+                color: #5465FF;
             }
         }
+
         .classy-nav-container {
             background-color: transparent;
         }
+
         .classy-navbar {
             height: 100px;
             padding: 0;
+
             @media #{$breakpoint-xs} {
                 height: 70px;
             }
         }
     }
+
     .is-sticky {
         .original-nav-area {
-            background-color: $color-white;
+            background-color: #5465FF;
             margin-top: 0;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
             position: fixed;
@@ -471,6 +492,7 @@ img {
             left: 0;
             right: 0;
             z-index: 900;
+
             .classy-navbar {
                 height: 70px;
             }
@@ -661,12 +683,15 @@ img {
 .single-blog-area {
     position: relative;
     z-index: 1;
+
     .single-blog-thumbnail {
         position: relative;
         z-index: 1;
+
         img {
             width: 100%;
         }
+
         .post-date {
             position: absolute;
             z-index: 10;
@@ -676,12 +701,14 @@ img {
             background-color: $color-white;
             padding: 20px 8px;
             text-align: center;
+
             a {
                 font-size: 24px;
                 text-transform: uppercase;
                 color: $color-dark;
                 line-height: 1;
                 font-family: $helvetica-medium;
+
                 span {
                     display: block;
                     font-family: $opensans-fonts;
@@ -691,6 +718,7 @@ img {
             }
         }
     }
+
     .single-blog-content {
         .line {
             background-color: #c8c8c8;
@@ -698,6 +726,7 @@ img {
             height: 2px;
             margin-bottom: 20px;
         }
+
         .post-tag {
             color: #a1a1a1;
             font-size: 11px;
@@ -705,33 +734,40 @@ img {
             letter-spacing: 3px;
             margin-bottom: 10px;
             display: block;
+
             &:hover,
             &:focus {
                 color: $color-dark;
             }
         }
+
         h4 {
             a {
                 display: inline-block;
                 color: $color-dark;
                 font-size: 24px;
                 margin-bottom: 30px;
+
                 &:hover,
                 &:focus {
                     color: $hover-color;
                 }
+
                 @media #{$breakpoint-lg} {
                     margin-bottom: 20px;
                 }
             }
         }
+
         > p {
             line-height: 2;
             margin-bottom: 70px;
+
             @media #{$breakpoint-lg} {
                 margin-bottom: 30px;
             }
         }
+
         .post-meta {
             p {
                 font-size: 9px;
@@ -739,18 +775,22 @@ img {
                 margin-bottom: 0;
                 letter-spacing: 3px;
                 display: inline-block;
+
                 &:first-of-type {
                     margin-right: 30px;
                 }
+
                 a {
                     font-size: 9px;
                     text-transform: uppercase;
-                    color: $color-dark;
+                    color: #131b42; //CHANGE THIS
+                    background-color: #131B42;
                     letter-spacing: 3px;
                 }
             }
         }
     }
+
     &.blog-style-2 {
         .single-blog-content {
             > p {
@@ -1591,6 +1631,8 @@ textarea:focus ~ .highlight {
     padding: 60px 0;
     position: relative;
     z-index: 1;
+    background-color: #5465FF;
+
     .footer-social-area {
         a {
             display: inline-block;
@@ -1599,9 +1641,11 @@ textarea:focus ~ .highlight {
             font-size: 13px;
         }
     }
+
     .classynav ul li a {
         text-transform: uppercase;
-        color: #4f4d4d;
+        color: #131b42;
+
         &:focus,
         &:hover {
             color: $color-dark;

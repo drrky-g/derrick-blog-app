@@ -32,8 +32,9 @@
   padding: 0; }
 
 body {
-  font-family: "helveticaneuemedium";
-  background-color: #ffffff; }
+    font-family: "helveticaneuemedium";
+    background-color: #131B42;
+}
 
 h1,
 h2,
@@ -57,7 +58,7 @@ a {
   transition-duration: 500ms;
   text-decoration: none;
   outline: none;
-  font-size: 14px;
+  font-size:36px;
   font-family: "helveticaneuemedium";
   color: #4f4d4d; }
   a:hover, a:focus {
@@ -66,7 +67,7 @@ a {
     transition-duration: 500ms;
     text-decoration: none;
     outline: none;
-    font-size: 14px; }
+    font-size: 36px; }
 
 #preloader {
   display: -webkit-box;
@@ -287,26 +288,29 @@ img {
     background-color: rgba(0, 0, 0, 0.6); }
 
 .original-btn {
-  position: relative;
-  z-index: 1;
-  padding: 0 30px;
-  min-width: 175px;
-  height: 60px;
-  border: 1px solid;
-  border-color: #dcdcdc;
-  font-size: 14px;
-  border-radius: 0;
-  line-height: 59px;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-family: "Open Sans", sans-serif;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
-  color: #000000; }
+    position: relative;
+    z-index: 1;
+    padding: 0 30px;
+    min-width: 175px;
+    height: 60px;
+    font-size: 14px;
+    border-radius: 50px;
+    line-height: 59px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    color: #131b42;
+    background: linear-gradient(-3deg, #42B5FF 5%, #05F4DD 95%);
+}
   .original-btn:hover, .original-btn:focus {
     font-family: "Open Sans", sans-serif;
     color: #ffffff;
     border-color: #30336b;
-    background-color: #30336b; }
+    background-color: #30336b;
+    font-size: 16px;
+  }
 
 /* :: Header Area CSS */
 .header-area {
@@ -331,7 +335,7 @@ img {
       .header-area .top-header .top-social-area a {
         display: inline-block;
         padding: 5px 15px;
-        color: #000000;
+        color: #e3e3ff;
         font-size: 13px; }
         .header-area .top-header .top-social-area a:hover, .header-area .top-header .top-social-area a:focus {
           color: #30336b; }
@@ -344,10 +348,11 @@ img {
         @media only screen and (min-width: 576px) and (max-width: 767px) {
           .header-area .top-header .top-social-area a {
             padding: 5px 4px; } }
-  .header-area .logo-area {
+.header-area .logo-area {
     height: 170px;
-    border-top: 1px solid #e1e1e1;
-    border-bottom: 1px solid #e1e1e1; }
+    background: inherit;
+    ;
+}
     @media only screen and (max-width: 767px) {
       .header-area .logo-area {
         height: 100px; } }
@@ -369,9 +374,11 @@ img {
       padding: 0; }
       .header-area .original-nav-area .subscribe-btn a:hover, .header-area .original-nav-area .subscribe-btn a:focus {
         background-color: #30336b; }
-    .header-area .original-nav-area .classynav ul li a {
-      text-transform: uppercase;
-      color: #4f4d4d; }
+.header-area .original-nav-area .classynav ul li a {
+    text-transform: uppercase;
+    color: #131b42;
+    font-weight: bold;
+}
       .header-area .original-nav-area .classynav ul li a:focus, .header-area .original-nav-area .classynav ul li a:hover {
         color: #000000; }
     .header-area .original-nav-area .classy-nav-container {
@@ -408,11 +415,11 @@ img {
       display: none;
       width: 100%; }
       #breakingNewsTicker.ticker ul li a {
-        color: #000000;
+        color: #e3e3ff;
         font-size: 14px;
         text-transform: uppercase; }
         #breakingNewsTicker.ticker ul li a:hover {
-          color: #30336b; }
+          color: #000; }
 
 .modal-backdrop.show {
   opacity: .8 !important; }
@@ -583,7 +590,7 @@ img {
       color: #000000; }
   .single-blog-area .single-blog-content h4 a {
     display: inline-block;
-    color: #000000;
+    color: #5465ff;
     font-size: 24px;
     margin-bottom: 30px; }
     .single-blog-area .single-blog-content h4 a:hover, .single-blog-area .single-blog-content h4 a:focus {
@@ -739,9 +746,10 @@ img {
     .sidebar-widget-area .single-blog-post .post-content h4 {
       margin-bottom: 10px;
       line-height: 1; }
-      .sidebar-widget-area .single-blog-post .post-content h4 .post-headline {
-        font-size: 16px;
-        color: #000000; }
+        .sidebar-widget-area .single-blog-post .post-content h4 .post-headline {
+            font-size: 16px;
+            color: #5465FF;
+        }
     .sidebar-widget-area .single-blog-post .post-content .post-meta p {
       margin-bottom: 0; }
       .sidebar-widget-area .single-blog-post .post-content .post-meta p a {
@@ -1301,11 +1309,12 @@ textarea:focus ~ .highlight {
   padding: 60px 0;
   position: relative;
   z-index: 1; }
-  .footer-area .footer-social-area a {
-    display: inline-block;
-    padding: 5px 15px;
-    color: #000000;
-    font-size: 13px; }
+    .footer-area .footer-social-area a {
+        display: inline-block;
+        padding: 5px 15px;
+        color: #5465FF;
+        font-size: 13px;
+    }
   .footer-area .classynav ul li a {
     text-transform: uppercase;
     color: #4f4d4d; }
@@ -1412,5 +1421,19 @@ textarea:focus ~ .highlight {
     transform: scale(1.7);
     opacity: 0; } }
 /* The End */
+
+/* Tweaks */
+
+#web-title {
+    color: #5465FF;
+    font-size: 72px;
+    
+}
+
+p {
+    color: #e3e3ff;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */
