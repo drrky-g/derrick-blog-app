@@ -96,8 +96,13 @@
                                 <ul>
                                     <li>@Html.ActionLink("Home", "Index")</li>
                                     <li><a href="about-us.html">About Us</a></li>
+                                    <li>@Html.ActionLink("Contact Admin", "Contact", "Home")</li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li>@Html.ActionLink("Admin", "AdminIndex")</li>
+                                    <!-- conditional link to create action if user is logged in and admin-->
+                                    @if (User.IsInRole("Admin")) { 
+                                    <li>@Html.ActionLink("New Post", "Create", "BlogPosts")</li>
+                                    }
                                 </ul>
                             </div>
                             <!-- Nav End -->

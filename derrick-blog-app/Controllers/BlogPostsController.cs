@@ -12,6 +12,7 @@ using derrick_blog_app.Utilities;
 
 namespace derrick_blog_app.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -26,10 +27,9 @@ namespace derrick_blog_app.Controllers
 
         /*This generates a view for the admin to see all posts
          even if they arent published */
-        [Authorize(Roles = "Admin")]
         public ActionResult AdminIndex()
         {
-            return View("AdminIndex",db.BlogPosts);
+            return View("AdminIndex",db.BlogPosts.OrderByDescending(b => b.Created).ToList());
 
         }
         //.OrderByDescending(b => b.Created)
@@ -41,6 +41,7 @@ namespace derrick_blog_app.Controllers
 
         //  THIS WILL EVENTUALLY BE IN HOME CONTROLLER FOR PUBLIC VIEW!!!!!!
         //------------------------------------------------------------------------
+        [AllowAnonymous]
         public ActionResult Index()
         {
             //set variable to only show published blog posts, ordering by most recent
@@ -52,7 +53,7 @@ namespace derrick_blog_app.Controllers
         
 
          
-
+        [AllowAnonymous]
         // GET: BlogPosts/Details/5
         public ActionResult Details(string Slug)
         {
@@ -72,7 +73,6 @@ namespace derrick_blog_app.Controllers
 
       
         // GET: BlogPosts/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create() 
         {
             return View();
@@ -83,8 +83,6 @@ namespace derrick_blog_app.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-
-        [Authorize(Roles = "Admin")]
         //[Bind()] is used to restrict what properties will be pulled from the database
         //the strings are the names of the properties being called for the actionresult
         public ActionResult Create([Bind(Include = "Title,Abstract,Body,Published")] BlogPost blogPost, HttpPostedFileBase image)
