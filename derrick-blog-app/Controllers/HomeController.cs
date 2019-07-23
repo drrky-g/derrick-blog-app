@@ -42,14 +42,20 @@ namespace derrick_blog_app.Controllers
             {
                 try
                 {
-                    var body = "<p> Email From: <bold>{0}</bold> ({1})</p><p>Message:</p><p>{2}</p>";
-                    var from = "MyPortfolio<example@email.com>";
-                    model.Body = "This is a message from your portfolio site. The name and the email of the contacting person is above.";
+
+
+
+                    //var from = model.FromName + "<" + model.FromEmail + ">";
+                    //var from = "MyPortfolio<example@email.com>";
+                   
+                    var from = $"{model.FromEmail}-{model.FromName}<{WebConfigurationManager.AppSettings["emailto"]}>";
+
 
                     var email = new MailMessage(from, WebConfigurationManager.AppSettings["emailto"])
                     {
-                        Subject = "Portfolio Contact Email",
-                        Body = string.Format(body, model.FromName, model.FromEmail, model.Body),
+                        
+                        Subject = model.Subject,
+                        Body = $"You've got a message from {model.FromName}: <br> <hr>{model.Body}",
                         IsBodyHtml = true
                     };
                     var svc = new PersonalEmail();
