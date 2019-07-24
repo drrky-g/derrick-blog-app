@@ -1,9 +1,6 @@
 ﻿@model derrick_blog_app.Models.ForgotPasswordViewModel
-@{
-    ViewBag.Title = "Forgot your password?";
-}
 
-<h2>@ViewBag.Title.</h2>
+<h2> Resend Password Reset</h2>
 
 @using (Html.BeginForm("ResendEmailConfirmation", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {

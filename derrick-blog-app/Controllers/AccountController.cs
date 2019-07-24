@@ -275,7 +275,22 @@ namespace derrick_blog_app.Controllers
             {
                 string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                // Send Email using PersonalEmail class
+                //------------------------------------
+                // 1: Get MailMessage
+                var emailFrom = WebConfigurationManager.AppSettings["emailto"];
+                var email = new MailMessage(emailFrom, model.Email)
+                {
+
+                    Subject = "Confirm your account",
+                    Body = "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>",
+                    IsBodyHtml = true
+                };
+                // 2: Create PersonalEmail instance
+                var svc = new PersonalEmail();
+                // 3: Fire method from PersonalEmail class
+                await svc.SendAsync(email);
 
             }
             return RedirectToAction("ConfirmationSent");
