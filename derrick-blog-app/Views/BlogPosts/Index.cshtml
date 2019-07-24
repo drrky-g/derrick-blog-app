@@ -1,9 +1,12 @@
-﻿@model IEnumerable<derrick_blog_app.Models.BlogPost>
+﻿@using derrick_blog_app.Models;
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<BlogPost>
 <!-- functionally, you could seperate the namespace from the model here.
     it would look something like 'using: derrick_blog_app;'
     then you can add the IEnumerable model afterwords.
 
-
+    other version: '(at)modelIEnumerable<derrick_blog_app.Models.BlogPost>'
     ALL VIEWS NEED A MODEL ALWAYS! model  view model view model view model view model view
     -->
 @{
@@ -60,6 +63,8 @@
 
                 }
 
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
+                @Model.PageCount  @Html.PagedListPager(Model, page => Url.Action("Index", new { page}))
             </div>
         </div>
     </div>

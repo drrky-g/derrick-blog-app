@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using derrick_blog_app.Models;
 using derrick_blog_app.Utilities;
+using PagedList;
 
 namespace derrick_blog_app.Controllers
 {
@@ -42,10 +43,15 @@ namespace derrick_blog_app.Controllers
         //  THIS WILL EVENTUALLY BE IN HOME CONTROLLER FOR PUBLIC VIEW!!!!!!
         //------------------------------------------------------------------------
         [AllowAnonymous]
-        public ActionResult Index()
-        {
+        public ActionResult Index(int? page)
+        {//added int? page so that page value is passed to Index action for PagedList plugin
+
+            int pageSize = 3;
+            int pageNumber = page ?? 1;
+
             //set variable to only show published blog posts, ordering by most recent
-            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToList();
+            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToPagedList(pageNumber, pageSize);
+
             //return the view for all published posts
             return View("Index",publishedBlogPosts);
         }
