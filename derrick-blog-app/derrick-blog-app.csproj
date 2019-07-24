@@ -446,6 +446,8 @@
     <Content Include="Scripts\tinymce\langs\readme.md" />
     <Content Include="Views\BlogPosts\AdminIndex.cshtml" />
     <Content Include="private.config" />
+    <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
+    <Content Include="Views\Account\ConfirmationSent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
