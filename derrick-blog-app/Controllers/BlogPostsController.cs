@@ -13,10 +13,15 @@ using PagedList;
 
 namespace derrick_blog_app.Controllers
 {
+    [RequireHttps]
     [Authorize(Roles = "Admin")]
     public class BlogPostsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+
+
+        
 
         // GET: BlogPosts
 
@@ -41,24 +46,54 @@ namespace derrick_blog_app.Controllers
 
 
         //  THIS WILL EVENTUALLY BE IN HOME CONTROLLER FOR PUBLIC VIEW!!!!!!
+        //(modified route config instead, this is now the home screen by default.
         //------------------------------------------------------------------------
         [AllowAnonymous]
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string searchStr)
         {//added int? page so that page value is passed to Index action for PagedList plugin
+         //added string searchStr to feed search signature to index view
+
+            ViewBag.Search = searchStr;
+            var blogList = IndexSearch(searchStr);
 
             int pageSize = 3;
             int pageNumber = page ?? 1;
-
-            //set variable to only show published blog posts, ordering by most recent
-            var publishedBlogPosts = db.BlogPosts.Where(b => b.Published).OrderByDescending(b => b.Created).ToPagedList(pageNumber, pageSize);
+            
+            ////set variable to only show published blog posts, ordering by most recent
+            //var publishedBlogPosts = listPosts.OrderByDescending(b => b.Created).ToPagedList(pageNumber, pageSize);
 
             //return the view for all published posts
-            return View("Index",publishedBlogPosts);
+            return View(blogList.ToPagedList(pageNumber, pageSize));
         }
 
-        
+        //Searching Functionality
+        //----------------------------------
+        //Searching Action
+        public IQueryable<BlogPost> IndexSearch(string searchStr)
+        {
+            IQueryable<BlogPost> result = null;
+            if (searchStr != null)
+            {
+                result = db.BlogPosts.AsQueryable();
+                result = result.Where(p => p.Title.Contains(searchStr)
+                                   || p.Body.Contains(searchStr)
+                                   || p.Abstract.Contains(searchStr)
+                                   || p.Comments.Any(c => c.Body.Contains(searchStr)
+                                      || c.Author.FirstName.Contains(searchStr)
+                                      || c.Author.LastName.Contains(searchStr)
+                                      || c.Author.Email.Contains(searchStr)));
+            }
+            else
+            {
+                result = db.BlogPosts.AsQueryable();
+            }
+            return result.OrderByDescending(p => p.Created);
+        }
 
-         
+
+
+
+
         [AllowAnonymous]
         // GET: BlogPosts/Details/5
         public ActionResult Details(string Slug)

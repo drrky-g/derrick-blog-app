@@ -96,14 +96,28 @@
 
                             <!-- Nav Start -->
                             <div class="classynav">
+                                <!-- Searchbar -->
+
+                                @using (Html.BeginForm("Index", "BlogPosts", FormMethod.Get, htmlAttributes: new { @class = "form" }))
+                                {
+                                    <div class="owl-controls controls-row search-row">
+                                        <input id="searchStr" name="searchStr" class="input-block-level" type="text" placeholder="Search" />
+                                        <button id="searchStr" name="searchStr" class="btn btn-success" type="submit">
+                                            Search
+                                        </button>
+                                    </div>
+                                }
+
+                                <!---------------------------->
                                 <ul>
-                                    <li>@Html.ActionLink("Home","Index", "BlogPosts")</li>
+                                    <li>@Html.ActionLink("Home", "Index", "BlogPosts")</li>
                                     <li>@Html.ActionLink("About Me", "About", "Home")</li>
                                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                                     <li>@Html.ActionLink("Admin", "AdminIndex")</li>
                                     <!-- conditional link to create action if user is logged in and admin-->
-                                    @if (User.IsInRole("Admin")) { 
-                                    <li>@Html.ActionLink("New Post", "Create", "BlogPosts")</li>
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <li>@Html.ActionLink("New Post", "Create", "BlogPosts")</li>
                                     }
                                 </ul>
                             </div>

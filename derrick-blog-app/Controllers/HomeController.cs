@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace derrick_blog_app.Controllers
 {
+    [RequireHttps] //May have to change my SMTP port to the SSL one?
     public class HomeController : Controller
     {
 
