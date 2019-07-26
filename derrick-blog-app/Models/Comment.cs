@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -8,7 +9,9 @@ namespace derrick_blog_app.Models
     public class Comment
     {
         //Classes are used the same way an object factory works in javascript
+        [Required]
         public int Id { get; set; }
+        [Required]
         public int BlogPostId { get; set; }
         public string AuthorId { get; set; }
         public string Body { get; set; }
