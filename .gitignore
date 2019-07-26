@@ -10,7 +10,8 @@
 *.userosscache
 *.sln.docstates
 *.config
-Startup.Auth.cs
+*Startup.Auth.cs
+
 
 
 # User-specific files (MonoDevelop/Xamarin Studio)
