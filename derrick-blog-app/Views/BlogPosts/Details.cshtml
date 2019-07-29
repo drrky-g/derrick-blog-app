@@ -42,14 +42,13 @@
                     <div class="single-blog-area blog-style-2 mb-50">
                         <!-- Blog Content -->
                         <div class="single-blog-content">
-                            <a href="#" class="post-tag">Lifestyle</a>
                             <div class="line"></div>
                             <!-- Title -->
                             <h4><a href="#" class="post-headline mb-0">@Model.Title</a></h4>
                             <div class="post-meta mb-50">
                                 <!-- Author -->
-                                <p>By james smith</p>
-                                <p>3 comments</p>
+                                <p>By Derrick Gordon</p>
+                                
 
                             </div>
 
@@ -63,11 +62,12 @@
                     </div>
 
                     <div class="post-a-comment-area mt-70">
-                        <h5>Leave a reply</h5>
-                        <!-- Reply Form -->
-                        <!-- conditionally render form if user is logged in-->
                         @if (User.Identity.IsAuthenticated)
                         {
+                            <h5>Leave a reply</h5>
+                            <!-- Reply Form -->
+                            <!-- conditionally render form if user is logged in-->
+
                             @Html.BeginForm("Create", "Comments", FormMethod.Post)
                             @Html.AntiForgeryToken()
                             // Hidden tells HttpPost that the Id for this blog will be fed to "BlogPostId" property in the comment model -->
@@ -105,11 +105,16 @@
                                             <!-- Comment Meta -->
 
                                             <div class="comment-meta">
-                                                <a href="#" class="post-date">@blogcomment.Created.ToString("MM/dd/yyyy")</a>
-                                                <p><a href="#" class="post-author">@blogcomment.Author.Email</a></p>
+                                                <p class="post-date">@blogcomment.Created.ToString("MM/dd/yyyy")</p>
+                                                <p>@blogcomment.Author.Email</p>
                                                 <p> @blogcomment.Body</p>
                                                 <br />
                                                 @if (User.IsInRole("Moderator"))
+                                                {
+                                                    @Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = blogcomment.Id })
+                                                    @Html.ActionLink("Delete", "Delete", "Comments", new { id = blogcomment.Id })
+                                                }
+                                                @if (User.IsInRole("Admin"))
                                                 {
                                                     @Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = blogcomment.Id })
                                                     @Html.ActionLink("Delete", "Delete", "Comments", new { id = blogcomment.Id })

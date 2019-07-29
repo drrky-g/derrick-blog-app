@@ -388,6 +388,9 @@
     <Compile Include="Utilities\StringUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="android-chrome-192x192.png" />
+    <Content Include="android-chrome-512x512.png" />
+    <Content Include="apple-touch-icon.png" />
     <Content Include="Content\animate.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -398,6 +401,8 @@
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\style.css" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -599,6 +604,15 @@
     <Content Include="Scripts\tinymce\themes\silver\theme.min.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Uploads\1.png" />
+    <Content Include="Uploads\2.png" />
+    <Content Include="Uploads\6.jpg" />
+    <Content Include="Uploads\6.png" />
+    <Content Include="Uploads\advanced-feature-2.jpg" />
+    <Content Include="Uploads\b1.jpg" />
+    <Content Include="Uploads\call-to-action-bg.jpg" />
+    <Content Include="Uploads\en.png" />
+    <Content Include="Uploads\lp4.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -650,10 +664,10 @@
     <Content Include="private.config" />
     <Content Include="Views\Account\ResendEmailConfirmation.cshtml" />
     <Content Include="Views\Account\ConfirmationSent.cshtml" />
+    <Content Include="site.webmanifest" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

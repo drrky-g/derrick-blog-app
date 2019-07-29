@@ -9,12 +9,12 @@
 @import url(/Content/font-awesome.min.css);
 @font-face {
   font-family: 'helveticaneuebold';
-  src: url("/fonts/helvetica_neu_bold-webfont.woff2") format("woff2"), url("/fonts/helvetica_neu_bold-webfont.woff") format("woff");
+  src: url('/fonts/helvetica_neu_bold-webfont.woff2') format("woff2"), url('/fonts/helvetica_neu_bold-webfont.woff') format("woff");
   font-weight: normal;
   font-style: normal; }
 @font-face {
   font-family: 'helveticaneuemedium';
-  src: url("/fonts/helveticaneue_medium-webfont.woff2") format("woff2"), url("/fonts/helveticaneue_medium-webfont.woff") format("woff");
+  src: url('/fonts/helveticaneue_medium-webfont.woff2') format("woff2"), url('/fonts/helveticaneue_medium-webfont.woff') format("woff");
   font-weight: normal;
   font-style: normal; }
 /* :: Import All CSS */
@@ -24,7 +24,7 @@
   padding: 0; }
 
 body {
-    font-family: "helveticaneuemedium";
+    font-family: "helveticaneuemedium", Arial, Helvetica, sans-serif;
     background-color: #131B42;
     color: #e3e3ff;
 }
@@ -35,32 +35,36 @@ h3,
 h4,
 h5,
 h6 {
-  color: #e3e3ff;
-  font-weight: 500;
-  line-height: 1.3;
-  font-family: "helveticaneuemedium"; }
+    color: #e3e3ff;
+    font-weight: 500;
+    line-height: 1.3;
+    font-family: "helveticaneuemedium", Arial, Helvetica, sans-serif;
+}
 
 p {
-  color: #e3e3ff;
-  font-size: 14px;
-  line-height: 1.4;
-  font-family: "helveticaneuemedium"; }
+    color: #e3e3ff;
+    font-size: 14px;
+    line-height: 1.4;
+    font-family: "helveticaneuemedium", Arial, Helvetica, sans-serif;
+}
 
 a {
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
-  text-decoration: none;
-  outline: none;
-  font-size:36px;
-  font-family: "helveticaneuemedium";
-  color: #4f4d4d; }
-  a:hover, a:focus {
-    font-family: "helveticaneuemedium";
     -webkit-transition-duration: 500ms;
     transition-duration: 500ms;
     text-decoration: none;
     outline: none;
-    font-size: 36px; }
+    font-size: 36px;
+    font-family: "helveticaneuemedium", Arial, Helvetica, sans-serif;
+    color: #4f4d4d;
+}
+    a:hover, a:focus {
+        font-family: "helveticaneuemedium", Arial, Helvetica, sans-serif;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms;
+        text-decoration: none;
+        outline: none;
+        font-size: 36px;
+    }
 
 #preloader {
   display: -webkit-box;
@@ -967,7 +971,7 @@ img {
 .contact-form h5,
 .post-a-comment-area h5 {
   font-size: 18px;
-  color: #000000;
+  color: #e3e3ff;
   margin-bottom: 30px; }
 .contact-form button,
 .post-a-comment-area button {
