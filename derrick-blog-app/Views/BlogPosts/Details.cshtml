@@ -8,62 +8,120 @@
 
 
 <!-- ##### Single Blog Area Start ##### -->
-<div class="single-blog-wrapper section-padding-0-100">
+    <div class="single-blog-wrapper section-padding-0-100">
 
-    <!-- Single Blog Area  -->
-    <div class="single-blog-area blog-style-2 mb-50">
-        <div class="single-blog-thumbnail">
-            <!-- Image -->
+        <!-- Single Blog Area  -->
+        <div class="single-blog-area blog-style-2 mb-50">
+            <div class="single-blog-thumbnail">
+                <!-- Image -->
 
-            @if (Model.MediaUrl != null)
-            {
-                <img class="img-responsive" src="@Model.MediaUrl" alt="" />
-            }
-            <div class="post-tag-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="post-date">
-                                <!-- Created Date -->
-                                <a href="#"> <span>@Model.Created.ToString("MM/dd/yyyy")</span></a>
+                @if (Model.MediaUrl != null)
+                {
+                    <img class="img-responsive" src="@Model.MediaUrl" alt="" />
+                }
+                <div class="post-tag-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="post-date">
+                                    <!-- Created Date -->
+                                    <a href="#"> <span>@Model.Created.ToString("MM/dd/yyyy")</span></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="row">
-            <!-- ##### Post Content Area ##### -->
-            <div class="col-12 col-lg-9">
-                <!-- Single Blog Area  -->
-                <div class="single-blog-area blog-style-2 mb-50">
-                    <!-- Blog Content -->
-                    <div class="single-blog-content">
-                        <a href="#" class="post-tag">Lifestyle</a>
-                        <div class="line"></div>
-                        <!-- Title -->
-                        <h4><a href="#" class="post-headline mb-0">@Model.Title Party people in the house</a></h4>
-                        <div class="post-meta mb-50">
-                            <!-- Author -->
-                            <p>By james smith</p>
-                            <p>3 comments</p>
+        <div class="container">
+            <div class="row">
+                <!-- ##### Post Content Area ##### -->
+                <div class="col-12 col-lg-9">
+                    <!-- Single Blog Area  -->
+                    <div class="single-blog-area blog-style-2 mb-50">
+                        <!-- Blog Content -->
+                        <div class="single-blog-content">
+                            <a href="#" class="post-tag">Lifestyle</a>
+                            <div class="line"></div>
+                            <!-- Title -->
+                            <h4><a href="#" class="post-headline mb-0">@Model.Title</a></h4>
+                            <div class="post-meta mb-50">
+                                <!-- Author -->
+                                <p>By james smith</p>
+                                <p>3 comments</p>
+
+                            </div>
+
+                            <!-- Catagory tag -->
+                            <!-- Abstract -->
+                            <p class="abstract-content"> @Model.Abstract</p>
+                            <!-- Body -->
+                            @Html.Raw(Model.Body)
 
                         </div>
+                    </div>
 
-                        <!-- Catagory tag -->
-                        <!-- Abstract -->
-                        <p class="abstract-content"> @Model.Abstract</p>
-                        <!-- Body -->
-                        @Html.Raw(Model.Body)
+                    <div class="post-a-comment-area mt-70">
+                        <h5>Leave a reply</h5>
+                        <!-- Reply Form -->
+                        <!-- conditionally render form if user is logged in-->
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            @Html.BeginForm("Create", "Comments", FormMethod.Post)
+                            @Html.AntiForgeryToken()
+                            // Hidden tells HttpPost that the Id for this blog will be fed to "BlogPostId" property in the comment model -->
+                            @Html.Hidden("BlogPostId", Model.Id)
+                            //keeps slug for routing back to details view after post action completes
+                            @Html.HiddenFor(model => model.Slug)
+                            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ this may have to be lowercase: "slug" (dont forget to change it in controller too!!!
+                            // text input area-->
+                            <div class="row">
 
+                                <div class="col-12">
+                                    <div class="group">
+                                        <input name="commentBody" placeholder="Write a comment..." />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn original-btn">Comment</button>
+                                </div>
+                            </div>
+
+                        }
+
+
+                        <!-- Comment Area Start -->
+                        <div class="comment_area clearfix mt-70">
+                            <h5 class="title">Comments</h5>
+
+                            <ol>
+                                @foreach (var blogcomment in Model.Comments.OrderByDescending(c => c.Created))
+                                {
+                                    <!-- Single Comment Area -->
+                                    <li class="single_comment_area">
+                                        <!-- Comment Content -->
+                                        <div class="comment-content d-flex">
+                                            <!-- Comment Meta -->
+
+                                            <div class="comment-meta">
+                                                <a href="#" class="post-date">@blogcomment.Created.ToString("MM/dd/yyyy")</a>
+                                                <p><a href="#" class="post-author">@blogcomment.Author.Email</a></p>
+                                                <p> @blogcomment.Body</p>
+                                                <br />
+                                                @if (User.IsInRole("Moderator"))
+                                                {
+                                                    @Html.ActionLink("Edit Comment", "Edit", "Comments", new { id = blogcomment.Id })
+                                                    @Html.ActionLink("Delete", "Delete", "Comments", new { id = blogcomment.Id })
+                                                }
+                                            </div>
+                                        </div>
+                                    </li>
+                                }
+                            </ol>
+                        </div>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </div>
-</div> 

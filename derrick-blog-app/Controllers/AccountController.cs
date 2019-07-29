@@ -72,7 +72,9 @@ namespace derrick_blog_app.Controllers
         {
             if (!ModelState.IsValid)
             {
+                
                 return View(model);
+ 
             }
 
             // This doesn't count login failures towards account lockout
@@ -81,7 +83,7 @@ namespace derrick_blog_app.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index", "BlogPosts");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -469,12 +471,10 @@ namespace derrick_blog_app.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "BlogPosts");
         }
 
         //

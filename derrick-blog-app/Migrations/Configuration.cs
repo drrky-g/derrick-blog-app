@@ -68,12 +68,12 @@ namespace derrick_blog_app.Migrations
             }
 
             //user two, Gary Miller
-            if(!context.Users.Any(u => u.Email == "Derrickwg17@gmail.com"))
+            if(!context.Users.Any(u => u.Email == "derrickwg17@gmail.com"))
             {//if there is no user with this email, create a new user
                 userManager.Create(new ApplicationUser
                 {//fill the ApplicationUser class with this information for this user
-                    UserName = "Derrickwg17@gmail.com",
-                    Email = "Derrickwg17@gmail.com",
+                    UserName = "derrickwg17@gmail.com",
+                    Email = "derrickwg17@gmail.com",
                     FirstName = "Derrick",
                     LastName = "Gordon",
                     DisplayName = "Drrk"
