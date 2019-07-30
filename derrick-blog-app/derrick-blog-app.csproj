@@ -613,6 +613,7 @@
     <Content Include="Uploads\call-to-action-bg.jpg" />
     <Content Include="Uploads\en.png" />
     <Content Include="Uploads\lp4.jpg" />
+    <Content Include="Uploads\profile_city.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

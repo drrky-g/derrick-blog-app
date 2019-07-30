@@ -17,6 +17,7 @@ namespace derrick_blog_app.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comments
+        [Authorize(Roles = "Admin, Moderator")]
         public ActionResult Index()
         {
             var comments = db.Comments.Include(c => c.Author).Include(c => c.BlogPost);
@@ -24,6 +25,7 @@ namespace derrick_blog_app.Controllers
         }
 
         // GET: Comments/Details/5
+        [AllowAnonymous]
         public ActionResult Details(int? id)
         {
             if (id == null)

@@ -345,7 +345,8 @@ img {
           .header-area .top-header .top-social-area a {
             padding: 5px 4px; } }
 .header-area .logo-area {
-    height: 170px;
+    height: auto;
+    padding: 20px;
     background: inherit;
     text-align: left;
     ;

@@ -68,14 +68,16 @@
                             <!-- Reply Form -->
                             <!-- conditionally render form if user is logged in-->
 
-                            @Html.BeginForm("Create", "Comments", FormMethod.Post)
+                            using (Html.BeginForm("Create", "Comments", FormMethod.Post))
+                            {
+
                             @Html.AntiForgeryToken()
-                            // Hidden tells HttpPost that the Id for this blog will be fed to "BlogPostId" property in the comment model -->
+                                // Hidden tells HttpPost that the Id for this blog will be fed to "BlogPostId" property in the comment model -->
                             @Html.Hidden("BlogPostId", Model.Id)
-                            //keeps slug for routing back to details view after post action completes
+                                //keeps slug for routing back to details view after post action completes
                             @Html.HiddenFor(model => model.Slug)
-                            //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ this may have to be lowercase: "slug" (dont forget to change it in controller too!!!
-                            // text input area-->
+                                //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ this may have to be lowercase: "slug" (dont forget to change it in controller too!!!
+                                // text input area-->
                             <div class="row">
 
                                 <div class="col-12">
@@ -87,7 +89,7 @@
                                     <button type="submit" class="btn original-btn">Comment</button>
                                 </div>
                             </div>
-
+                            }
                         }
 
 

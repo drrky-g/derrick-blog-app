@@ -90,6 +90,9 @@ namespace derrick_blog_app.Migrations
 
             userId = userManager.FindByEmail("DerrickG@Mailinator.com").Id;
             userManager.AddToRole(userId, "Admin");
+
+            userId = userManager.FindByEmail("derrickwg17@gmail.com").Id;
+            userManager.AddToRole(userId, "Admin");
             #endregion 
         }
     }

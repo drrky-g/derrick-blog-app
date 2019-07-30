@@ -1664,7 +1664,7 @@ textarea:focus ~ .highlight {
     }
     .header-area .logo-area {
         height: auto;
-        padding: 130px 0 100px;
+        padding: 50px;
         border-top: 1px solid #999da4;
         border-bottom: none;
         @media #{$breakpoint-xs} {
