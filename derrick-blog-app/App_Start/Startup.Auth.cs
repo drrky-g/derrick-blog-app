@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using derrick_blog_app.Models;
+using Owin.Security.Providers.GitHub;
 
 namespace derrick_blog_app
 {
@@ -45,24 +46,33 @@ namespace derrick_blog_app
             // This is similar to the RememberMe option when you log in.
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
 
+            app.UseGitHubAuthentication(
+                clientId: "9b0950b48b15261523db",
+                clientSecret: "c2c69bb704308290abbd8c5d5c056a3899589a54");
+
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+               consumerKey: "g9uEp3dxCrmrbcsBeW1lQTF0J",
+               consumerSecret: "JOT4MVE4xzSu2vrX2E5d1A4OKYniwF7vWorUhOC25GtCSaprZE");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "855079384878894",
+               appSecret: "da22bdd0d486a4c396945048317d88f3");
 
+            //STILL NEED TO ADD GOOGLE 3RD PARTY OAUTH SERVICE!!
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            //Hide key values in private.config:
+            //ClientId = WebConfigurationManager.AppSettings[{ "googleClientId"}],
+            //clientSecret = WebConfigurationManager.AppSettings["googleClientSecret"]
         }
     }
 }

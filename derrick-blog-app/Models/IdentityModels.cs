@@ -21,6 +21,7 @@ namespace derrick_blog_app.Models
         public string LastName { get; set; }
         public string DisplayName { get; set; }
 
+
         //Virtual Navigation Section
         public virtual ICollection<Comment> Comments { get; set; }
 

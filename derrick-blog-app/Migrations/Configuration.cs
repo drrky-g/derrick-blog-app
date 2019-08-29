@@ -80,6 +80,17 @@ namespace derrick_blog_app.Migrations
                 }, /*this is the password for the user*/ "Abc&123!");
             }
 
+            if (!context.Users.Any(u => u.Email == "JTwich@Mailinator.com"))
+            {
+                userManager.Create(new ApplicationUser
+                {
+                    UserName = "JTwich@Mailinator.com",
+                    Email = "JTwich@Mailinator.com",
+                    FirstName = "Jason",
+                    LastName = "Twichell",
+                    DisplayName = "Twich"
+                }, "Abc&123!");
+            }
             #endregion
 
             //assign users to roles
@@ -92,6 +103,9 @@ namespace derrick_blog_app.Migrations
             userManager.AddToRole(userId, "Admin");
 
             userId = userManager.FindByEmail("derrickwg17@gmail.com").Id;
+            userManager.AddToRole(userId, "Admin");
+
+            userId = userManager.FindByEmail("JTwich@Mailinator.com").Id;
             userManager.AddToRole(userId, "Admin");
             #endregion 
         }

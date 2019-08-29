@@ -44,10 +44,6 @@ namespace derrick_blog_app.Controllers
                 try
                 {
 
-
-
-                    //var from = model.FromName + "<" + model.FromEmail + ">";
-                    //var from = "MyPortfolio<example@email.com>";
                    
                     var from = $"{model.FromEmail}-{model.FromName}<{WebConfigurationManager.AppSettings["emailto"]}>";
 

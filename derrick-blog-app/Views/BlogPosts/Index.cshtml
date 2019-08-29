@@ -36,7 +36,7 @@
                                 <div class="single-blog-thumbnail">
                                     @if (item.MediaUrl != null)
                                     {
-                                        <img class="img-responsive" src="@item.MediaUrl" alt="" />
+                                        <img class="img-responsive" src="@Url.Content(item.MediaUrl)" alt="" />
                                     }
                                     <div class="post-date">
                                         <a href="#"><span>@item.Created.ToString("MM/dd/yyyy")</span><!--Posted date--></a>

@@ -181,7 +181,7 @@ namespace derrick_blog_app.Controllers
                     // 3: Fire method from PersonalEmail class
                     await svc.SendAsync(email);
                     //Return to index
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "BlogPost");
                 }
                 AddErrors(result);
             }

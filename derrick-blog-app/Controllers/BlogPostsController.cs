@@ -61,8 +61,8 @@ namespace derrick_blog_app.Controllers
             
             ////set variable to only show published blog posts, ordering by most recent
             //var publishedBlogPosts = listPosts.OrderByDescending(b => b.Created).ToPagedList(pageNumber, pageSize);
-
             //return the view for all published posts
+
             return View(blogList.ToPagedList(pageNumber, pageSize));
         }
 
@@ -135,8 +135,17 @@ namespace derrick_blog_app.Controllers
                 if (ImageUploadValidator.IsWebFriendlyImage(image))
                 {
                     var fileName = Path.GetFileName(image.FileName);
-                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), fileName));
-                    blogPost.MediaUrl = "/Uploads/" + fileName;
+                    var thisExtension = Path.GetExtension(image.FileName);
+                    //add datetime stamp to end of filename
+                    //run that through slug
+                    //map path
+                    //save property
+                    var fileWithDate = $"{fileName}-{DateTime.Now}";
+                    var slugFileName = StringUtilities.CreateSlug(fileWithDate);
+                    var formattedMedia = $"{slugFileName}{thisExtension}";
+                    image.SaveAs(Path.Combine(Server.MapPath("~/Uploads/"), formattedMedia));
+                    
+                    blogPost.MediaUrl = "/Uploads/" + formattedMedia;
                 }
                 
                 //Slug setting
